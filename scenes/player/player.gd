@@ -6,7 +6,7 @@ const JUMP_FORCE = 400
 const SLOW_DOWN_TIME = 0.3
 
 func _ready():
-	pass # Replace with function body.
+	%Image.play("idle")
 
 func _physics_process(delta):
 	velocity.y += GRAVITY * delta
@@ -25,7 +25,26 @@ func _process(delta):
 			new_velocity = max(velocity.x - slow_down, 0.0)
 		else:
 			new_velocity = min(velocity.x + slow_down, 0.0)
+	
+	if velocity.x != 0.0 and is_on_floor():
+		%Image.play("running")
+	else:
+		%Image.play("idle")
+		
 	if Input.is_action_pressed("Jump"):
 		if is_on_floor():
 			velocity.y -= JUMP_FORCE
+			
+	if not is_on_floor():
+		if velocity.y > 0.0:
+			%Image.play("fall")
+		else:
+			%Image.play("jump")
+			
 	velocity.x = new_velocity
+	
+	# flip image if needed
+	if velocity.x > 0.0:
+		%Image.flip_h = false
+	else:
+		%Image.flip_h = true

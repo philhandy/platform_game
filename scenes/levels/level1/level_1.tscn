@@ -1,23 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://mb6hp8j0bbrg"]
+[gd_scene load_steps=5 format=3 uid="uid://mb6hp8j0bbrg"]
 
 [ext_resource type="PackedScene" uid="uid://boc4et5vfyrdt" path="res://scenes/floor/floor.tscn" id="1_5g0er"]
+[ext_resource type="Texture2D" uid="uid://dak8k28ef8q0w" path="res://gfx/background.png" id="1_lyie3"]
 [ext_resource type="PackedScene" uid="uid://jtmus1whevfa" path="res://scenes/platform/platform.tscn" id="2_gmnbo"]
 [ext_resource type="PackedScene" uid="uid://cbllltpugykip" path="res://scenes/player/player.tscn" id="3_qyfbj"]
 
 [node name="Level1" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_lyie3")
+centered = false
 
 [node name="Floor" parent="." instance=ExtResource("1_5g0er")]
 
 [node name="Platforms" type="Node2D" parent="."]
 
 [node name="Platform" parent="Platforms" instance=ExtResource("2_gmnbo")]
-position = Vector2(402, 296)
+position = Vector2(314, 84)
 
 [node name="Platform2" parent="Platforms" instance=ExtResource("2_gmnbo")]
-position = Vector2(344, 517)
+position = Vector2(135, 352)
 
 [node name="Platform3" parent="Platforms" instance=ExtResource("2_gmnbo")]
-position = Vector2(651, 416)
+position = Vector2(502, 231)
 
 [node name="Player" parent="." instance=ExtResource("3_qyfbj")]
 position = Vector2(102, 76)
