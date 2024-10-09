@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://burclub1xsi5b"]
+
+[ext_resource type="Texture2D" uid="uid://c2rp2vmmbjwhi" path="res://gfx/Saw.png" id="1_a8kw0"]
+[ext_resource type="Script" path="res://scenes/saw/saw.gd" id="1_slici"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qj0r4"]
+atlas = ExtResource("1_a8kw0")
+region = Rect2(0, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u46p"]
+atlas = ExtResource("1_a8kw0")
+region = Rect2(38, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksvve"]
+atlas = ExtResource("1_a8kw0")
+region = Rect2(76, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0y5d"]
+atlas = ExtResource("1_a8kw0")
+region = Rect2(114, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukbly"]
+atlas = ExtResource("1_a8kw0")
+region = Rect2(152, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rbqf"]
+atlas = ExtResource("1_a8kw0")
+region = Rect2(190, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbfvl"]
+atlas = ExtResource("1_a8kw0")
+region = Rect2(228, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u3pg"]
+atlas = ExtResource("1_a8kw0")
+region = Rect2(266, 0, 38, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o2nla"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qj0r4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4u46p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksvve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0y5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukbly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rbqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbfvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4u3pg")
+}],
+"loop": true,
+"name": &"rotating",
+"speed": 40.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8kkkg"]
+radius = 19.0
+
+[node name="Saw" type="Node2D" groups=["trap"]]
+script = ExtResource("1_slici")
+
+[node name="Image" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_o2nla")
+animation = &"rotating"
+frame_progress = 0.704917
+
+[node name="Area2D" type="Area2D" parent="." groups=["trap"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8kkkg")

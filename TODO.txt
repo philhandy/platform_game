@@ -1,0 +1,9 @@
+
+Platform TODO
+need sound
+need ability to die
+death animation
+proper level
+win condition
+lives
+pickups
