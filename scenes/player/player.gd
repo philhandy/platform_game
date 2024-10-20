@@ -5,14 +5,19 @@ const SPEED = 250
 const JUMP_FORCE = 300
 const SLOW_DOWN_TIME = 0.2
 
+var alive
+
 func _ready():
 	%Image.play('idle')
+	alive = true
 
 func _physics_process(delta):
 	velocity.y += GRAVITY * delta
 	move_and_slide()
 
 func _process(delta):
+	if not alive:
+		return
 	var new_velocity = 0.0
 	if Input.is_action_pressed('Left'):
 		new_velocity -= SPEED
@@ -49,8 +54,16 @@ func _process(delta):
 	else:
 		%Image.flip_h = true
 
+func player_death():
+	velocity.y -= JUMP_FORCE
+	alive = false
+	collision_layer = 2
+	collision_mask = 2
+
 func _on_area_2d_area_entered(area):
+	if not alive:
+		return
 	if area.is_in_group('trap'):
-		print('hit')
+		player_death()
 	if area.is_in_group('fire'):
-		print('fire')
+		player_death()

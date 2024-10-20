@@ -216,9 +216,8 @@ unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_t5vi1")
 animation = &"jump"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_lyhuy")
 

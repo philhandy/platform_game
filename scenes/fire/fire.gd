@@ -14,8 +14,8 @@ func _on_timer_timeout():
 	if fire_on:
 		%AnimatedSprite2D.play("fire_off")
 		fire_on = false
-		%Area2D.monitoring = false
+		%FireHitbox.disabled = true
 	else:
 		%AnimatedSprite2D.play("fire_on")
 		fire_on = true
-		%Area2D.monitoring = true
+		%FireHitbox.disabled = false
